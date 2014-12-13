@@ -126,9 +126,9 @@ class PaymentInfoResponse extends Response {
         return $this->sent;
     }
 
-    /** @return string */
+    /** @return int */
     public function getStatus() {
-        return $this->status;
+        return (int) $this->status;
     }
 
     /** @inheritdoc */
