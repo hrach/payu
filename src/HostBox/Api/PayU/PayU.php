@@ -85,9 +85,17 @@ class PayU {
      * @return void
      */
     public function prepareEntityForRequest(IRequest &$request) {
-        if ($request instanceof NewPaymentRequest && $request->getPosAuthKey() === NULL && $request->getPosId() === NULL) {
-            $request->setPosAuthKey($this->getConfig()->getPosAuthKey());
-            $request->setPosId($this->getConfig()->getPosId());
+        if ($request instanceof NewPaymentRequest) {
+            if ($request->getPosAuthKey() === NULL) {
+                $request->setPosAuthKey($this->getConfig()->getPosAuthKey());
+            }
+            if ($request->getPosId() === NULL) {
+                $request->setPosId($this->getConfig()->getPosId());
+            }
+        } elseif ($request instanceof PaymentInfoRequest) {
+            if ($request->getPosId() === NULL) {
+                $request->setPosId($this->getConfig()->getPosId());
+            }
         }
     }
 
