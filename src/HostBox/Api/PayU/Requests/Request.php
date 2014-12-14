@@ -67,7 +67,7 @@ abstract class Request implements IRequest {
     public function getConnectionParameters(IConfig $config) {
         $parameters = array();
         foreach ($this->getDataToArray($config) as $name => $value) {
-            $parameters[] = $name . '=' . $value;
+            $parameters[] = $name . '=' . urlencode($value);
         }
 
         return implode('&', $parameters);
