@@ -138,4 +138,25 @@ class PaymentInfoResponse extends Response {
         );
     }
 
+
+    public function toArray()
+    {
+        return array(
+            'id' => $this->getId(),
+            'orderId' => $this->getOrderId(),
+            'amount' => $this->getAmount(),
+            'status' => $this->getStatus(),
+            'payType' => $this->getPayType(),
+            'payGwName' => $this->getPayGwName(),
+            'desc' => $this->getDesc(),
+            'desc2' => $this->getDesc2(),
+            'create' => $this->getCreate(),
+            'init' => $this->getInit(),
+            'sent' => $this->getSent(),
+            'recv' => $this->getRecv(),
+            'cancel' => $this->getCancel(),
+            'authFraud' => $this->getAuthFraud(),
+        );
+    }
+
 }
