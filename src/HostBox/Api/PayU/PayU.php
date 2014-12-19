@@ -58,7 +58,7 @@ class PayU {
 
     /**
      * @param PaymentCancelRequest $request
-     * @return PaymentInfoResponse
+     * @return PaymentActionResponse
      */
     public function cancelPayment(PaymentCancelRequest $request) {
         return $this->createResponseEntity($request);
@@ -66,7 +66,7 @@ class PayU {
 
     /**
      * @param PaymentConfirmRequest $request
-     * @return PaymentInfoResponse
+     * @return PaymentActionResponse
      */
     public function confirmPayment(PaymentConfirmRequest $request) {
         return $this->createResponseEntity($request);
