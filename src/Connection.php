@@ -90,9 +90,9 @@ class Connection
 	private function checkAndGetEncoding()
 	{
 		switch ($this->config->getEncoding()) {
-			case IConfig::ENCODING_ISO_8859_2:
-			case IConfig::ENCODING_UTF_8:
-			case IConfig::ENCODING_WINDOWS_1250:
+			case Config::ENCODING_ISO_8859_2:
+			case Config::ENCODING_UTF_8:
+			case Config::ENCODING_WINDOWS_1250:
 				return $this->config->getEncoding();
 			default:
 				throw new LogicException('Not supported character encoding');
@@ -107,8 +107,8 @@ class Connection
 	private function checkAndGetResponseFormat()
 	{
 		switch ($this->config->getFormat()) {
-			case IConfig::FORMAT_TXT:
-			case IConfig::FORMAT_XML:
+			case Config::FORMAT_TXT:
+			case Config::FORMAT_XML:
 				return $this->config->getFormat();
 			default:
 				throw new LogicException('Not supported response format');

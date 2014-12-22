@@ -2,17 +2,17 @@
 
 namespace Nextras\PayU\Requests;
 
-use Nextras\PayU\IConfig;
+use Nextras\PayU\Config;
 
 
 interface IRequest
 {
 
 	/**
-	 * @param IConfig $config
+	 * @param Config $config
 	 * @return string
 	 */
-	public function getConnectionParameters(IConfig $config);
+	public function getConnectionParameters(Config $config);
 
 
 	/** @return string */

@@ -2,8 +2,8 @@
 
 namespace Nextras\PayU\Requests;
 
+use Nextras\PayU\Config;
 use Nextras\PayU\LogicException;
-use Nextras\PayU\IConfig;
 use Nextras\PayU\Strings;
 use Nette\Reflection\ClassType;
 use Nette\Utils\ArrayHash;
@@ -70,7 +70,7 @@ abstract class Request implements IRequest
 
 
 	/** @inheritdoc */
-	public function getConnectionParameters(IConfig $config)
+	public function getConnectionParameters(Config $config)
 	{
 		$parameters = array();
 		foreach ($this->getDataToArray($config) as $name => $value) {
@@ -82,11 +82,11 @@ abstract class Request implements IRequest
 
 
 	/**
-	 * @param IConfig $config
+	 * @param  Config $config
 	 * @throws LogicException
 	 * @return array
 	 */
-	public function getDataToArray(IConfig $config)
+	public function getDataToArray(Config $config)
 	{
 		$this->setPosId($config->getPosId());
 		if ($this instanceof NewPaymentRequest) {

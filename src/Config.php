@@ -3,8 +3,15 @@
 namespace Nextras\PayU;
 
 
-class Config implements IConfig
+class Config
 {
+	const ENCODING_ISO_8859_2 = 'ISO';
+	const ENCODING_UTF_8 = 'UTF';
+	const ENCODING_WINDOWS_1250 = 'WIN';
+
+	const FORMAT_XML = 'xml';
+	const FORMAT_TXT = 'txt';
+
 	/** @var int */
 	private $posId;
 
@@ -32,12 +39,7 @@ class Config implements IConfig
 	 * @param string $encoding
 	 * @param string $format
 	 */
-	public function __construct($posId,
-		$posAuthKey,
-		$key1,
-		$key2,
-		$encoding = IConfig::ENCODING_UTF_8,
-		$format = IConfig::FORMAT_XML)
+	public function __construct($posId, $posAuthKey, $key1, $key2, $encoding = self::ENCODING_UTF_8, $format = self::FORMAT_XML)
 	{
 		$this->posId = $posId;
 		$this->posAuthKey = $posAuthKey;
@@ -48,42 +50,42 @@ class Config implements IConfig
 	}
 
 
-	/** @inheritdoc */
+	/** @return int */
 	public function getPosId()
 	{
 		return $this->posId;
 	}
 
 
-	/** @inheritdoc */
+	/** @return int */
 	public function getPosAuthKey()
 	{
 		return $this->posAuthKey;
 	}
 
 
-	/** @inheritdoc */
+	/** @return int */
 	public function getKey1()
 	{
 		return $this->key1;
 	}
 
 
-	/** @inheritdoc */
+	/** @return int */
 	public function getKey2()
 	{
 		return $this->key2;
 	}
 
 
-	/** @inheritdoc */
+	/** @return int */
 	public function getEncoding()
 	{
 		return strtoupper($this->encoding);
 	}
 
 
-	/** @inheritdoc */
+	/** @return int */
 	public function getFormat()
 	{
 		return strtolower($this->format);
