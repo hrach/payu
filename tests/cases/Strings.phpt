@@ -5,7 +5,7 @@ namespace NextrasTests\PayU;
 use Nextras\PayU\Strings;
 use Tester;
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 
 class StringsTest extends Tester\TestCase {
@@ -25,4 +25,6 @@ class StringsTest extends Tester\TestCase {
 
 }
 
-\run(new StringsTest());
+
+$test = new StringsTest();
+$test->run();

@@ -8,7 +8,7 @@ use Nextras\PayU\Requests\PaymentCancelRequest;
 use Nextras\PayU\Requests\PaymentInfoRequest;
 use Tester;
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 
 class ConnectionTest extends Tester\TestCase {
@@ -55,4 +55,6 @@ class ConnectionTest extends Tester\TestCase {
 
 }
 
-\run(new ConnectionTest());
+
+$test = new ConnectionTest();
+$test->run();

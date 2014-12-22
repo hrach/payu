@@ -10,7 +10,7 @@ use Nextras\PayU\Requests\PaymentConfirmRequest;
 use Nextras\PayU\Requests\PaymentInfoRequest;
 use Tester;
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 
 class RequestTest extends Tester\TestCase {
@@ -95,4 +95,6 @@ class RequestTest extends Tester\TestCase {
 
 }
 
-\run(new RequestTest());
+
+$test = new RequestTest();
+$test->run();

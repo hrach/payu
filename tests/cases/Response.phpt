@@ -5,7 +5,7 @@ namespace NextrasTests\PayU;
 use Nextras\PayU\Responses\PaymentInfoResponse;
 use Tester;
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 
 class ResponseTest extends Tester\TestCase {
@@ -30,4 +30,6 @@ class ResponseTest extends Tester\TestCase {
 
 }
 
-\run(new ResponseTest());
+
+$test = new ResponseTest();
+$test->run();
