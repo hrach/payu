@@ -2,10 +2,10 @@
 
 namespace Nextras\PayU;
 
-use Nextras\PayU\Exceptions\LogicException;
-use Nextras\PayU\Exceptions\NotImplementedException;
-use Nextras\PayU\Exceptions\ResponseException;
-use Nextras\PayU\Exceptions\RuntimeException;
+use Nextras\PayU\LogicException;
+use Nextras\PayU\NotImplementedException;
+use Nextras\PayU\ResponseException;
+use Nextras\PayU\RuntimeException;
 use Nextras\PayU\Requests\IRequest;
 use Nextras\PayU\Requests\NewPaymentRequest;
 use Nextras\PayU\Requests\PaymentCancelRequest;

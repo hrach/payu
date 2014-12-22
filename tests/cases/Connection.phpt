@@ -41,7 +41,7 @@ class ConnectionTest extends Tester\TestCase {
                 new Config(12345, 'ab', 'cd', 'ef', 'WTF-8')
             );
             $connection->getUrl(new PaymentInfoRequest());
-        }, 'Nextras\PayU\Exceptions\LogicException');
+        }, 'Nextras\PayU\LogicException');
     }
 
     public function testCheckFormat() {
@@ -50,7 +50,7 @@ class ConnectionTest extends Tester\TestCase {
                 new Config(12345, 'ab', 'cd', 'ef', Config::ENCODING_UTF_8, 'json')
             );
             $connection->getUrl(new PaymentInfoRequest());
-        }, 'Nextras\PayU\Exceptions\LogicException');
+        }, 'Nextras\PayU\LogicException');
     }
 
 }

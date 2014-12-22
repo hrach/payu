@@ -2,7 +2,7 @@
 
 namespace Nextras\PayU;
 
-use Nextras\PayU\Exceptions\LogicException;
+use Nextras\PayU\LogicException;
 use Nextras\PayU\Requests\IRequest;
 use Nextras\PayU\Requests\Request;
 use Kdyby\CurlCaBundle\CertificateHelper;

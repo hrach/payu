@@ -2,7 +2,7 @@
 
 namespace Nextras\PayU\Requests;
 
-use Nextras\PayU\Exceptions\LogicException;
+use Nextras\PayU\LogicException;
 use Nextras\PayU\IConfig;
 use Nextras\PayU\Strings;
 use Nette\Reflection\ClassType;
