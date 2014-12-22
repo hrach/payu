@@ -1,8 +1,8 @@
 <?php
 
-namespace HostBox\Api\PayU\Requests;
+namespace Nextras\PayU\Requests;
 
-use HostBox\Api\PayU\IConfig;
+use Nextras\PayU\IConfig;
 
 
 interface IRequest

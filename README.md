@@ -1,21 +1,14 @@
-(Experimental!) Enjoyable Api for PayU [![Build Status](https://travis-ci.org/HostBox/api-PayU.png?branch=master)](https://travis-ci.org/HostBox/api-PayU)
-===================
+PayU api for PHP
+================
 
-Package Installation
--------------------
+[![Build Status](https://travis-ci.org/nextras/payu.png?branch=master)](https://travis-ci.org/nextras/payu)
 
-The best way to install PayU API is using [Composer](http://getcomposer.org/):
+
+Installation
+------------
+
+The best way to install is using [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require hostbox/api-payu
-```
-
-[Packagist - Versions](https://packagist.org/packages/hostbox/api-payu)
-
-or manual edit composer.json in your project
-
-```json
-"require": {
-    "hostbox/api-payu": "dev-master"
-}
+$ composer require nextras/payu
 ```

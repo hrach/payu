@@ -4,12 +4,15 @@
 	"description": "PayU api for PHP",
 	"keywords": [
 		"api",
-		"PayU",
-		"payment",
-		"hostbox"
+		"payu",
+		"payment"
 	],
 	"license": "MIT",
 	"authors": [
+		{
+			"name": "Jan Škrášek",
+			"homepage": "http://jan.skrasek.com"
+		},
 		{
 			"name": "Pavel Macháň",
 			"email": "machan@hostbox.cz"
@@ -23,10 +26,10 @@
 		"nette/reflection": "~2.2",
 		"kdyby/curl-ca-bundle": "~1.0.5"
 	},
-	"suggest": {
-		"ext-curl": "*"
-	},
 	"require-dev": {
 		"nette/tester": "~1.0"
+	},
+	"suggest": {
+		"ext-curl": "*"
 	}
 }

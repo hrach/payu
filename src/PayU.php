@@ -1,20 +1,20 @@
 <?php
 
-namespace HostBox\Api\PayU;
+namespace Nextras\PayU;
 
-use HostBox\Api\PayU\Exceptions\LogicException;
-use HostBox\Api\PayU\Exceptions\NotImplementedException;
-use HostBox\Api\PayU\Exceptions\ResponseException;
-use HostBox\Api\PayU\Exceptions\RuntimeException;
-use HostBox\Api\PayU\Requests\IRequest;
-use HostBox\Api\PayU\Requests\NewPaymentRequest;
-use HostBox\Api\PayU\Requests\PaymentCancelRequest;
-use HostBox\Api\PayU\Requests\PaymentConfirmRequest;
-use HostBox\Api\PayU\Requests\PaymentInfoRequest;
-use HostBox\Api\PayU\Requests\Request;
-use HostBox\Api\PayU\Responses\IResponse;
-use HostBox\Api\PayU\Responses\PaymentActionResponse;
-use HostBox\Api\PayU\Responses\PaymentInfoResponse;
+use Nextras\PayU\Exceptions\LogicException;
+use Nextras\PayU\Exceptions\NotImplementedException;
+use Nextras\PayU\Exceptions\ResponseException;
+use Nextras\PayU\Exceptions\RuntimeException;
+use Nextras\PayU\Requests\IRequest;
+use Nextras\PayU\Requests\NewPaymentRequest;
+use Nextras\PayU\Requests\PaymentCancelRequest;
+use Nextras\PayU\Requests\PaymentConfirmRequest;
+use Nextras\PayU\Requests\PaymentInfoRequest;
+use Nextras\PayU\Requests\Request;
+use Nextras\PayU\Responses\IResponse;
+use Nextras\PayU\Responses\PaymentActionResponse;
+use Nextras\PayU\Responses\PaymentInfoResponse;
 
 
 class PayU

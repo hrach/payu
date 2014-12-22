@@ -1,9 +1,9 @@
 <?php
 
-namespace HostBox\Api\PayU\Responses;
+namespace Nextras\PayU\Responses;
 
 use DateTime;
-use HostBox\Api\PayU\Strings;
+use Nextras\PayU\Strings;
 use Nette\Reflection\ClassType;
 
 

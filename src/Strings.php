@@ -1,6 +1,6 @@
 <?php
 
-namespace HostBox\Api\PayU;
+namespace Nextras\PayU;
 
 
 class Strings

@@ -1,8 +1,8 @@
 <?php
 
-namespace HostBoxTests\Api\PayU;
+namespace NextrasTests\PayU;
 
-use HostBox\Api\PayU\Strings;
+use Nextras\PayU\Strings;
 use Tester;
 
 require_once __DIR__ . '/../../bootstrap.php';

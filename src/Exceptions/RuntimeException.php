@@ -1,6 +1,6 @@
 <?php
 
-namespace HostBox\Api\PayU\Exceptions;
+namespace Nextras\PayU\Exceptions;
 
 
 class RuntimeException extends \RuntimeException

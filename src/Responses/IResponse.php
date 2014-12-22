@@ -1,6 +1,6 @@
 <?php
 
-namespace HostBox\Api\PayU\Responses;
+namespace Nextras\PayU\Responses;
 
 
 interface IResponse

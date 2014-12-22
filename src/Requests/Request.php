@@ -1,10 +1,10 @@
 <?php
 
-namespace HostBox\Api\PayU\Requests;
+namespace Nextras\PayU\Requests;
 
-use HostBox\Api\PayU\Exceptions\LogicException;
-use HostBox\Api\PayU\IConfig;
-use HostBox\Api\PayU\Strings;
+use Nextras\PayU\Exceptions\LogicException;
+use Nextras\PayU\IConfig;
+use Nextras\PayU\Strings;
 use Nette\Reflection\ClassType;
 use Nette\Utils\ArrayHash;
 

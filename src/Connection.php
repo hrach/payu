@@ -1,10 +1,10 @@
 <?php
 
-namespace HostBox\Api\PayU;
+namespace Nextras\PayU;
 
-use HostBox\Api\PayU\Exceptions\LogicException;
-use HostBox\Api\PayU\Requests\IRequest;
-use HostBox\Api\PayU\Requests\Request;
+use Nextras\PayU\Exceptions\LogicException;
+use Nextras\PayU\Requests\IRequest;
+use Nextras\PayU\Requests\Request;
 use Kdyby\CurlCaBundle\CertificateHelper;
 
 

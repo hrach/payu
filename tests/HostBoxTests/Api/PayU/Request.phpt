@@ -1,13 +1,13 @@
 <?php
 
-namespace HostBoxTests\Api\PayU;
+namespace NextrasTests\PayU;
 
-use HostBox\Api\PayU\Config;
-use HostBox\Api\PayU\IConfig;
-use HostBox\Api\PayU\Requests\NewPaymentRequest;
-use HostBox\Api\PayU\Requests\PaymentCancelRequest;
-use HostBox\Api\PayU\Requests\PaymentConfirmRequest;
-use HostBox\Api\PayU\Requests\PaymentInfoRequest;
+use Nextras\PayU\Config;
+use Nextras\PayU\IConfig;
+use Nextras\PayU\Requests\NewPaymentRequest;
+use Nextras\PayU\Requests\PaymentCancelRequest;
+use Nextras\PayU\Requests\PaymentConfirmRequest;
+use Nextras\PayU\Requests\PaymentInfoRequest;
 use Tester;
 
 require_once __DIR__ . '/../../bootstrap.php';

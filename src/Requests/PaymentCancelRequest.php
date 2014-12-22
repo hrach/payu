@@ -1,6 +1,6 @@
 <?php
 
-namespace HostBox\Api\PayU\Requests;
+namespace Nextras\PayU\Requests;
 
 
 class PaymentCancelRequest extends PaymentInfoRequest
