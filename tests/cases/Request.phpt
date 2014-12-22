@@ -42,12 +42,12 @@ class RequestTest extends Tester\TestCase {
         Tester\Assert::exception(function () {
             $request = new NewPaymentRequest();
             $request->setPosAuthKey('123456789');
-        }, '\HostBox\Api\PayU\Exceptions\LogicException');
+        }, 'Nextras\PayU\Exceptions\LogicException');
 
         Tester\Assert::exception(function () {
             $request = new NewPaymentRequest();
             $request->setAmount(10000000000);
-        }, '\HostBox\Api\PayU\Exceptions\LogicException');
+        }, 'Nextras\PayU\Exceptions\LogicException');
 
     }
 
@@ -90,7 +90,7 @@ class RequestTest extends Tester\TestCase {
         Tester\Assert::exception(function () use ($config) {
             $request = new NewPaymentRequest();
             $request->getConnectionParameters($config);
-        }, '\HostBox\Api\PayU\Exceptions\LogicException');
+        }, 'Nextras\PayU\Exceptions\LogicException');
     }
 
 }
