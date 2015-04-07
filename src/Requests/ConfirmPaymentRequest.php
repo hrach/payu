@@ -9,13 +9,12 @@
 namespace Nextras\PayU\Requests;
 
 
-class PaymentConfirmRequest extends PaymentInfoRequest
+class ConfirmPaymentRequest extends Request
 {
 
-	/** @inheritdoc */
 	public function getType()
 	{
-		return Request::CONFIRM_PAYMENT;
+		return self::CONFIRM_PAYMENT;
 	}
 
 }

@@ -13,22 +13,28 @@ use Nextras\PayU\Config;
 
 interface IRequest
 {
+	const CREATE_PAYMENT = 'NewPayment';
+	const CONFIRM_PAYMENT = 'Payment/confirm';
+	const CANCEL_PAYMENT = 'Payment/cancel';
+	const PAYMENT_INFO = 'Payment/get';
+
 
 	/**
-	 * @param Config $config
+	 * @return array
+	 */
+	public function getParameters();
+
+
+	/**
 	 * @return string
 	 */
-	public function getConnectionParameters(Config $config);
-
-
-	/** @return string */
 	public function getType();
 
 
 	/**
-	 * @param string $key
+	 * @param  Config $config
 	 * @return string
 	 */
-	public function getSig($key);
+	public function getSig(Config $config);
 
 }

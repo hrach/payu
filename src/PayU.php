@@ -9,12 +9,11 @@
 namespace Nextras\PayU;
 
 use Nextras\PayU\Requests\IRequest;
-use Nextras\PayU\Requests\NewPaymentRequest;
-use Nextras\PayU\Requests\PaymentCancelRequest;
-use Nextras\PayU\Requests\PaymentConfirmRequest;
+use Nextras\PayU\Requests\CreatePaymentRequest;
+use Nextras\PayU\Requests\CancelPaymentRequest;
+use Nextras\PayU\Requests\ConfirmPaymentRequest;
 use Nextras\PayU\Requests\PaymentInfoRequest;
 use Nextras\PayU\Requests\Request;
-use Nextras\PayU\Responses\IResponse;
 use Nextras\PayU\Responses\PaymentActionResponse;
 use Nextras\PayU\Responses\PaymentInfoResponse;
 
@@ -47,147 +46,111 @@ class PayU
 	}
 
 
-	/** @return Config */
-	public function getConfig()
-	{
-		return $this->connection->getConfig();
-	}
-
-
 	/**
-	 * @param IRequest $request
-	 * @return string
-	 */
-	public function getRequestUrl(IRequest $request)
-	{
-		return $this->connection->getUrl($request);
-	}
-
-
-	/**
-	 * @param IRequest $request
-	 * @return string
-	 */
-	public function rawRequest(IRequest $request)
-	{
-		return $this->connection->request($request);
-	}
-
-
-	/**
-	 * @param PaymentInfoRequest $request
+	 * @param  PaymentInfoRequest $request
 	 * @return PaymentInfoResponse
 	 */
-	public function paymentInfo(PaymentInfoRequest $request)
+	public function sendPaymentInfo(PaymentInfoRequest $request)
 	{
 		return $this->createResponseEntity($request);
 	}
 
 
 	/**
-	 * @param PaymentCancelRequest $request
+	 * @param  CancelPaymentRequest $request
 	 * @return PaymentActionResponse
 	 */
-	public function cancelPayment(PaymentCancelRequest $request)
+	public function sendCancelPayment(CancelPaymentRequest $request)
 	{
 		return $this->createResponseEntity($request);
 	}
 
 
 	/**
-	 * @param PaymentConfirmRequest $request
+	 * @param  ConfirmPaymentRequest $request
 	 * @return PaymentActionResponse
 	 */
-	public function confirmPayment(PaymentConfirmRequest $request)
+	public function sendConfirmPayment(ConfirmPaymentRequest $request)
 	{
 		return $this->createResponseEntity($request);
 	}
 
 
 	/**
-	 * @param IResponse $response
-	 * @return bool
-	 */
-	public function isResponseValid(IResponse $response)
-	{
-		return $response->isSigValid($this->getConfig()->getKey2());
-	}
-
-
-	/**
-	 * @param IRequest $request
-	 * @return void
-	 */
-	public function prepareEntityForRequest(IRequest &$request)
-	{
-		if ($request instanceof NewPaymentRequest) {
-			if ($request->getPosAuthKey() === NULL) {
-				$request->setPosAuthKey($this->getConfig()->getPosAuthKey());
-			}
-			if ($request->getPosId() === NULL) {
-				$request->setPosId($this->getConfig()->getPosId());
-			}
-		} elseif ($request instanceof PaymentInfoRequest) {
-			if ($request->getPosId() === NULL) {
-				$request->setPosId($this->getConfig()->getPosId());
-			}
-		}
-	}
-
-
-	/**
-	 * @param IRequest $request
+	 * @param  CreatePaymentRequest $request
 	 * @return string
 	 */
-	public function getRequestSig(IRequest $request)
+	public function getCreatePaymentRedirectUrl(CreatePaymentRequest $request)
 	{
-		return $request->getSig($this->getConfig()->getKey1());
+		$url = $this->connection->getUrl($request);
+		$parameters = [];
+		foreach ($this->getRequestParameters($request) as $name => $value) {
+			$parameters[] = $name . '=' . urlencode($value);
+		}
+		return $url . '?' . implode('&', $parameters);
 	}
 
 
-	/**
-	 * @param IRequest $request
-	 * @throws NotImplementedException
-	 * @throws RuntimeException
-	 * @throws LogicException
-	 * @throws ResponseException
-	 * @return mixed
-	 */
-	private function createResponseEntity(IRequest $request)
+	protected function getRequestParameters(IRequest $request)
 	{
-		$this->prepareEntityForRequest($request);
-		$response = $this->connection->request($request);
-		switch ($this->connection->getConfig()->getFormat()) {
-			case Config::FORMAT_XML: {
-				if (($xml = @simplexml_load_string($response)) === FALSE) {
-					throw new RuntimeException('Response is not valid XML');
-				}
+		$config = $this->connection->getConfig();
 
-				$status = strtoupper((string) $xml->status);
-				if ($status == 'ERROR') {
-					throw new ResponseException((string) $xml->error->message, (int) $xml->error->nr);
-				} else {
-					if ($status == 'OK') {
-						switch ($request->getType()) {
-							case Request::GET_PAYMENT:
-								return new PaymentInfoResponse((array) $xml->trans);
-							case Request::CONFIRM_PAYMENT:
-							case Request::CANCEL_PAYMENT:
-								return new PaymentActionResponse((array) $xml->trans);
-							case Request::NEW_PAYMENT:
-							default:
-								throw new LogicException('Not supported request type for response');
-						}
-					} else {
-						throw new ResponseException('Unknown response status');
-					}
-				}
-			}
-			case Config::FORMAT_TXT:
-				throw new NotImplementedException('Not implemented response format');
-			default:
-				throw new LogicException('Not supported response format');
+		$parameters = $request->getParameters();
+		$parameters = array_filter($parameters, function($value) {
+			return $value !== NULL;
+		});
+
+		$parameters['pos_id'] = $config->getPosId();
+		$parameters['sig'] = $request->getSig($config);
+
+		if ($request->getType() === IRequest::CREATE_PAYMENT) {
+			$parameters['pos_auth_key'] = $config->getPosAuthKey();
 		}
+
+		return $parameters;
+	}
+
+
+	protected function createResponseEntity(IRequest $request)
+	{
+		if ($this->connection->getConfig()->getFormat() !== Config::FORMAT_XML) {
+			throw new NotImplementedException();
+		}
+
+		$parameters = $this->getRequestParameters($request);
+		$response = $this->connection->request($request, $parameters);
+
+		if (($xml = @simplexml_load_string($response)) === FALSE) {
+			throw new RuntimeException('Response is not valid XML');
+		}
+
+		$status = strtoupper((string) $xml->status);
+		if ($status !== 'ERROR') {
+			throw new ResponseException((string) $xml->error->message, (int) $xml->error->nr);
+		} elseif ($status !== 'OK') {
+			throw new ResponseException('Unknown response status');
+		}
+
+		switch ($request->getType()) {
+			case Request::PAYMENT_INFO:
+				$response = new PaymentInfoResponse((array) $xml->trans);
+				break;
+
+			case Request::CONFIRM_PAYMENT:
+			case Request::CANCEL_PAYMENT:
+				$response = new PaymentActionResponse((array) $xml->trans);
+				break;
+
+			case Request::CREATE_PAYMENT:
+			default:
+				throw new LogicException('Not supported request type for response');
+		}
+
+		if (!$response->isSigValid($this->connection->getConfig()->getKey2())) {
+			throw new LogicException('Response has not valid signature.');
+		}
+
+		return $response;
 	}
 
 }

@@ -48,9 +48,9 @@ class Config
 	public function __construct($posId, $posAuthKey, $key1, $key2, $encoding = self::ENCODING_UTF_8, $format = self::FORMAT_XML)
 	{
 		$this->posId = $posId;
-		$this->posAuthKey = $posAuthKey;
-		$this->key1 = $key1;
-		$this->key2 = $key2;
+		$this->posAuthKey = (string) $posAuthKey;
+		$this->key1 = (string) $key1;
+		$this->key2 = (string) $key2;
 		$this->encoding = $encoding;
 		$this->format = $format;
 	}
@@ -63,35 +63,35 @@ class Config
 	}
 
 
-	/** @return int */
+	/** @return string */
 	public function getPosAuthKey()
 	{
 		return $this->posAuthKey;
 	}
 
 
-	/** @return int */
+	/** @return string */
 	public function getKey1()
 	{
 		return $this->key1;
 	}
 
 
-	/** @return int */
+	/** @return string */
 	public function getKey2()
 	{
 		return $this->key2;
 	}
 
 
-	/** @return int */
+	/** @return string */
 	public function getEncoding()
 	{
 		return strtoupper($this->encoding);
 	}
 
 
-	/** @return int */
+	/** @return string */
 	public function getFormat()
 	{
 		return strtolower($this->format);

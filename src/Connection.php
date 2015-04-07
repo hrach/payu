@@ -18,7 +18,7 @@ class Connection
 	const PAYU_URL = 'https://secure.payu.com/paygw';
 
 	/** @var Config */
-	protected $config;
+	private $config;
 
 
 	public function __construct(Config $config)
@@ -27,7 +27,9 @@ class Connection
 	}
 
 
-	/** @return Config */
+	/**
+	 * @return Config
+	 */
 	public function getConfig()
 	{
 		return $this->config;
@@ -35,10 +37,11 @@ class Connection
 
 
 	/**
-	 * @param IRequest $request
+	 * @param  IRequest $request
+	 * @param  array    $parameters
 	 * @return string
 	 */
-	public function request(IRequest $request)
+	public function request(IRequest $request, array $parameters)
 	{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $this->getUrl($request));
@@ -46,39 +49,39 @@ class Connection
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $request->getConnectionParameters($this->config));
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($ch);
 		curl_close($ch);
-
 		return $response;
 	}
 
 
 	/**
-	 * @param IRequest $request
+	 * @param  IRequest $request
 	 * @return string
 	 */
 	public function getUrl(IRequest $request)
 	{
-		return implode('/',
-			array(
-				self::PAYU_URL, $this->checkAndGetEncoding(), $this->checkAndGetRequestType($request),
-				$this->checkAndGetResponseFormat()
-			));
+		return implode('/',	[
+			self::PAYU_URL,
+			$this->checkAndGetEncoding(),
+			$this->checkAndGetRequestType($request),
+			$this->checkAndGetResponseFormat(),
+		]);
 	}
 
 
 	/**
-	 * @param IRequest $request
+	 * @param  IRequest $request
 	 * @throws LogicException
 	 * @return string
 	 */
 	private function checkAndGetRequestType(IRequest $request)
 	{
 		switch ($request->getType()) {
-			case Request::NEW_PAYMENT:
-			case Request::GET_PAYMENT:
+			case Request::CREATE_PAYMENT:
+			case Request::PAYMENT_INFO:
 			case Request::CONFIRM_PAYMENT:
 			case Request::CANCEL_PAYMENT:
 				return $request->getType();

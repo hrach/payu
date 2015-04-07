@@ -9,13 +9,12 @@
 namespace Nextras\PayU\Requests;
 
 
-class PaymentCancelRequest extends PaymentInfoRequest
+class CancelPaymentRequest extends Request
 {
 
-	/** @inheritdoc */
 	public function getType()
 	{
-		return Request::CANCEL_PAYMENT;
+		return self::CANCEL_PAYMENT;
 	}
 
 }
