@@ -11,8 +11,7 @@ php:
 matrix:
     allow_failures:
         - php: 7
-        - php: hhvm
-        - php: hhvm-nigthly
+        - php: hhvm-nightly
 
 before_script:
     - composer install --no-interaction --prefer-source
