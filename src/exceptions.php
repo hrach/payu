@@ -19,6 +19,11 @@ class LogicException extends \LogicException
 }
 
 
+class InvalidStateException extends LogicException
+{
+}
+
+
 class NotImplementedException extends \LogicException
 {
 }
