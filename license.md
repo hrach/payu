@@ -1,4 +1,5 @@
-The MIT License (MIT)
+The MIT License
+===============
 
 Copyright (c) 2014 Jan Škrášek
 Copyright (c) 2014 HostBox - Pavel Macháň
