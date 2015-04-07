@@ -18,7 +18,8 @@
 		"kdyby/curl-ca-bundle": "~1.0.5"
 	},
 	"require-dev": {
-		"nette/tester":         "~1.4"
+		"nette/tester":         "~1.4",
+		"nette/di":             "~2.2"
 	},
 	"autoload": {
 		"psr-4": { "Nextras\\PayU\\": "src/" },
