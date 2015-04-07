@@ -19,5 +19,12 @@ before_script:
 
     - cp ./tests/php.sample.ini ./tests/php.ini
 
+    - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then cat ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini >> ./tests/php.ini; fi
+    - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then NTESTER_FLAGS="--coverage ./coverage.xml --coverage-src ./src"; else TESTER_FLAGS=""; fi
+
 script:
-    - ./vendor/bin/tester -s ./tests/cases
+    - ./vendor/bin/tester -s $NTESTER_FLAGS ./tests/cases
+
+after_script:
+    - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then composer require satooshi/php-coveralls; fi
+    - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then php vendor/bin/coveralls -c tests/.coveralls.yml -v; fi
