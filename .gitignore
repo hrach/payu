@@ -1,5 +1,5 @@
-composer.lock
+/composer.lock
 /vendor
-/.idea
-*.log
+/tests/temp
+/tests/php.ini
 output
