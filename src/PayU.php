@@ -1,11 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Nextras\PayU library.
+ * @license    MIT
+ * @link       https://github.com/nextras/payu
+ */
+
 namespace Nextras\PayU;
 
-use Nextras\PayU\LogicException;
-use Nextras\PayU\NotImplementedException;
-use Nextras\PayU\ResponseException;
-use Nextras\PayU\RuntimeException;
 use Nextras\PayU\Requests\IRequest;
 use Nextras\PayU\Requests\NewPaymentRequest;
 use Nextras\PayU\Requests\PaymentCancelRequest;

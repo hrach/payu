@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Nextras\PayU library.
+ * @license    MIT
+ * @link       https://github.com/nextras/payu
+ */
+
 namespace Nextras\PayU;
 
-use Nextras\PayU\LogicException;
 use Nextras\PayU\Requests\IRequest;
 use Nextras\PayU\Requests\Request;
 use Kdyby\CurlCaBundle\CertificateHelper;
