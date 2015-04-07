@@ -9,3 +9,16 @@ Tester\Environment::setup();
 define('TEMP_DIR', __DIR__ . '/temp/' . getmypid());
 @mkdir(dirname(TEMP_DIR)); // @ - directory may already exist
 Tester\Helpers::purge(TEMP_DIR);
+
+
+if (getenv(Tester\Environment::RUNNER)) {
+	# Runner
+	header('Content-type: text/plain');
+	putenv('ANSICON=TRUE');
+
+} elseif (PHP_SAPI === 'cli') {
+	# CLI
+
+} else {
+	# Browser
+}
