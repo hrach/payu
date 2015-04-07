@@ -3,7 +3,6 @@
 namespace NextrasTests\PayU;
 
 use Nextras\PayU\Config;
-use Nextras\PayU\IConfig;
 use Nextras\PayU\Requests\NewPaymentRequest;
 use Nextras\PayU\Requests\PaymentCancelRequest;
 use Nextras\PayU\Requests\PaymentConfirmRequest;
@@ -18,7 +17,7 @@ class RequestTest extends Tester\TestCase
 	/** @var NewPaymentRequest */
 	private $newPaymentRequest;
 
-	/** @var IConfig */
+	/** @var Config */
 	private $config;
 
 
