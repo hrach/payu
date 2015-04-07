@@ -9,7 +9,7 @@
 namespace Nextras\PayU;
 
 
-class Exception extends \Exception
+class InvalidArgumentException extends \InvalidArgumentException
 {
 }
 
