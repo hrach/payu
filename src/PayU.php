@@ -21,6 +21,22 @@ use Nextras\PayU\Responses\PaymentInfoResponse;
 
 class PayU
 {
+	const CHANNEL_BTN_CS = 'cs';
+	const CHANNEL_BTN_MB = 'mp';
+	const CHANNEL_BTN_KB = 'kb';
+	const CHANNEL_BTN_RB = 'rf';
+	const CHANNEL_BTN_GE = 'pg';
+	const CHANNEL_BTN_SB = 'pv';
+	const CHANNEL_BTN_FB = 'pf';
+	const CHANNEL_BTN_ERA = 'era';
+	const CHANNEL_BTN_CSOB = 'cb';
+	const CHANNEL_PAYSEC = 'psc';
+	const CHANNEL_CARD = 'c';
+	const CHANNEL_MOBITO = 'mo';
+	const CHANNEL_WIRE_TRANSFER = 'bt';
+	const CHANNEL_POST_TRANSFER = 'pt';
+	const CHANNEL_TEST = 't';
+
 	/** @var Connection */
 	private $connection;
 
