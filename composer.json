@@ -15,7 +15,7 @@
 		"php":                  ">=5.4.0",
 		"ext-curl":             "*",
 		"nette/reflection":     "~2.2",
-		"kdyby/curl-ca-bundle": "~1.0.5"
+		"kdyby/curl-ca-bundle": "~1.0"
 	},
 	"require-dev": {
 		"nette/tester":         "~1.4",
